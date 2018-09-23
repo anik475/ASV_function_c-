@@ -1,0 +1,30 @@
+#include "RotatingActor.h"
+
+
+// Sets default values
+ARotatingActor::ARotatingActor()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	PitchValue = 0.f;
+	YawValue = 0.f;
+	RollValue = 0.f;
+}
+
+// Called every frame
+void ATest::Tick( float DeltaTime )
+ {
+     Super::Tick( DeltaTime );
+ 
+     if (!SphereMovement.IsZero()) {
+         FRotator newRotation = SphereMovement ;
+ 
+         FQuat quatRotation = FQuat(newRotation);
+ 
+         AddActorLocalRotation(quatRotation,false,0,ETeleportType::None);
+     }
+ 
+ }
+
+	
